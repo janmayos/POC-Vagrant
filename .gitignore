@@ -1,0 +1,6 @@
+# Vagrant local state (machine-specific)
+.vagrant/
+
+# Optional local Vagrant artifacts
+*.log
+*.box
