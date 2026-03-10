@@ -4,3 +4,5 @@
 # Optional local Vagrant artifacts
 *.log
 *.box
+
+install-depencies/terramino-go/

@@ -27,8 +27,8 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 usermod -aG docker vagrant
 
 # Clone Terramino repository if it doesn't exist
-if [ ! -d "/home/vagrant/terramino-go/.git" ]; then
-  cd /home/vagrant
+if [ ! -d "/home/vagrant/terramino-go/terramino-go/.git" ]; then
+  cd /home/vagrant/terramino-go
   rm -rf terramino-go
   git clone https://github.com/hashicorp-education/terramino-go.git
   cd terramino-go
@@ -38,7 +38,7 @@ fi
 # Create reload script
 cat > /usr/local/bin/reload-terramino << 'EOF'
 #!/bin/bash
-cd /home/vagrant/terramino-go
+cd /home/vagrant/terramino-go/terramino-go
 docker compose down
 docker compose build --no-cache
 docker compose up -d
@@ -47,7 +47,7 @@ EOF
 chmod +x /usr/local/bin/reload-terramino
 
 # Add aliases
-echo 'alias play="docker compose -f /home/vagrant/terramino-go/docker-compose.yml exec -it backend ./terramino-cli"' >> /home/vagrant/.bashrc
+echo 'alias play="docker compose -f /home/vagrant/terramino-go/terramino-go/docker-compose.yml exec -it backend ./terramino-cli"' >> /home/vagrant/.bashrc
 echo 'alias reload="sudo /usr/local/bin/reload-terramino"' >> /home/vagrant/.bashrc
 # Source the updated bashrc
 echo "source /home/vagrant/.bashrc" >> /home/vagrant/.bash_profile
